@@ -8,6 +8,7 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import preprocess from 'svelte-preprocess';
 import { transformSync } from '@swc/core';
+import scss from "rollup-plugin-scss";
 
 const isDev = process.env.NODE_ENV === 'development';
 const buildDir = 'dist';
@@ -34,6 +35,7 @@ const plugins = [
 		}),
 		extensions: ['.svelte'],
 	}),
+	scss(),
 	typescript({ sourceMap: isDev }),
 	resolve({
 		browser: true,
